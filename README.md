@@ -27,9 +27,9 @@ HTML estático que es capaz de reproducir un video de Kaltura y enviar datos de c
 
 | Param       	| Mandatory  | Default Value 						| Description |
 | ------------- |:----------:| -------------------------------------|:------------|
-| data-siteid 	| No         | 577958         						|             |
-| data-lang   	| No         | ES 							        |             |
-| data-wid    	| No         | 106  					 	 		|             |
+| data-siteid 	| No         | 577958         						| AT-Internet, define unos identificadores para diferenciar el site de DEV/PRE/PRO. Añadir el ID que corresponda al site donde se muestre el Iframe. |
+| data-lang   	| No         | ES 							        | Idioma del vídeo actual, se pasa como flashvar al player Kaltura: **_closedCaptions.defaultLanguageKey_** |
+| data-wid    	| No         | 106  					 	 		| Kaltura también define unos IDs para diferenciar los players de DEV/PRE/PRO. Añadir el ID que corresponda al site donde se muestre el Iframe. |
 | data-uiconf 	| No         | 23448356 					        |             |
 | data-entry  	| No         | 0_w2pfb6wl  					        |             |
 | data-producer | No         | producer_name       					|             |
