@@ -23,7 +23,7 @@ HTML estático que es capaz de reproducir un video de Kaltura y enviar datos de c
 
 | Param       	| Mandatory  | Default Value 						| Description |
 | ------------- |:----------:| -------------------------------------|:------------|
-| data-lang   	| No         | ES 							        | Idioma del vídeo actual, se pasa como flashvar al player Kaltura: **_closedCaptions.defaultLanguageKey_** |
+| data-lang   	| No         | EN 							        | Idioma del vídeo actual, se pasa como flashvar al player Kaltura: **_closedCaptions.defaultLanguageKey_** |
 | data-url 		| No         | https://www.europarltv.europa.eu/home| URL actual del vídeo en la web. El logo personalizado del player enlazará a esta URL. Para ello se pasa como flashvar al player de Kaltura: **_logo.href_** |
 | data-wid    	| No         | 102  					 	 		| Kaltura también define unos IDs para diferenciar los entornos de DEV/PRE/PRO. Añadir el ID que corresponda al site donde se muestre el Iframe. |
 | data-uiconf 	| No         | 23448355 					        | ID del Player de Kaltura que mostrará el video. |
