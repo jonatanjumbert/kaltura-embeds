@@ -2,19 +2,38 @@
 HTML estático que es capaz de reproducir un video de Kaltura y enviar datos de consumo de video a AT-Internet según lo especificado en el Tagging Plan.
 
 ## Ejemplo de Uso
- - [Ver embed](container.html)
+ [Ver embed](container.html)
+ ```html
+ <iframe 
+	src="embed.min.html"
+	data-siteid="577958"
+	data-lang="ES"
+	data-wid="106"
+	data-uiconf="23448356"
+	data-entry=""
+	data-type=""
+	data-name=""
+	data-url=""
+	width="640" 
+	height="320" 
+	allowfullscreen 
+	webkitallowfullscreen 
+	mozAllowFullScreen 
+	frameborder="0">
+</iframe>
+```
 
 ### Parámetros que acepta el iframe
 
-| Param       | Mandatory     | Default Value  | Description |
-| ----------- |:-------------:| ---------------|:------------|
-| data-siteid | No            | 577958         |             |
-| data-lang | No            | 577958         |             |
-| data-wid | No            | 577958         |             |
-| data-uiconf | No            | 577958         |             |
-| data-entry | No            | 577958         |             |
-| data-producer | No            | 577958         |             |
-| data-type | No            | 577958         |             |
-| data-name | No            | 577958         |             |
-| data-url | No            | 577958         |             |
-| data-debug | No            | 577958         |             |
+| Param       	| Mandatory  | Default Value 						| Description |
+| ------------- |:----------:| -------------------------------------|:------------|
+| data-siteid 	| No         | 577958         						|             |
+| data-lang   	| No         | ES 							        |             |
+| data-wid    	| No         | 106  					 	 		|             |
+| data-uiconf 	| No         | 23448356 					        |             |
+| data-entry  	| No         | 0_w2pfb6wl  					        |             |
+| data-producer | No         | producer_name       					|             |
+| data-type 	| No         | programme_type				        |             |
+| data-name 	| No         | programme_name        				|             |
+| data-url 		| No         | https://www.europarltv.europa.eu/es/	|             |
+| data-debug	| No         | false         						|             |
