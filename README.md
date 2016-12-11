@@ -34,9 +34,10 @@ HTML estático que es capaz de reproducir un video de Kaltura y enviar datos de 
 | data-name 	| No         | programme_name        				| Dato que se enviará a AT-Internet. Corresponde con el nombre del video actual (el que aparece en la URL) |
 | data-debug	| No         | false         						| Si se activa a TRUE, se podrá ver los valores enviados a AT-Internet durante los eventos de play/pause/seek del player de Kaltura. |
 
-### Tested with
+### Testado con los siguientes navegadores
 
 | Browser | Version | Operating System |
 |---------|:-------:|:----------------:|
 |Google Chrome| 54.0.2840.99 m | Windows 10 |
 |Microsoft Edge | 38.14393.0.0 | Windows 10 |
+|Internet Explorer 11 | 11.447.14393.0 | Windows 10 |
