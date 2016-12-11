@@ -197,7 +197,7 @@
 										isEmbedded: true, 
 										duration : parseInt(kdp.evaluate('{mediaProxy.entry.duration}'), 10),
 										broadcastMode: 'clip',
-										webdomain : parent.document.location
+										webdomain : (typeof parent.document.location.href !== "undefined") && (typeof parent.document.location.href !== undefined) ? parent.document.location.href : ''
 									};
 									
 									tag.richMedia.add(datosMedia);
