@@ -8,9 +8,9 @@
 		<!-- 
 			@author: Jonatan Jumbert
 			@mailto: hola@jonatanjumbert.com
-			@last-revision: 09/12/2016
+			@last-revision: 20/12/2016
 			@minified-with: https://kangax.github.io/html-minifier/
-			@version: 1.1
+			@version: 1.3
 		 -->
 		<div id="video-player" style="height:100%; width: 100%"></div>
 		<script>
@@ -103,30 +103,27 @@
 			;(function() {
 				if(!window.console) console = { log: function(){} };
 				
-				var getIframeDataParam = function(name) {
-					if(typeof window.frameElement !== undefined && window.frameElement != null) {
-						if(typeof window.frameElement.getAttribute(name) !== undefined) {
-							if(typeof window.frameElement.getAttribute(name) !== "undefined") {
-								if(window.frameElement.getAttribute(name) != null && window.frameElement.getAttribute(name) != "") {
-									return window.frameElement.getAttribute(name);
-								}
-							}
-						}
-					}
-					
-					return "";	
+				var getIframeDataParam = function(name, url) {
+				    if(!url) {
+						url = window.location.href;
+				    }
+				    name = name.replace(/[\[\]]/g, "\\$&");
+				    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+				    if(!results) return null;
+				    if(!results[2]) return '';
+				    return decodeURIComponent(results[2].replace(/\+/g, " "));
 				};
 				
-				var siteID = (getIframeDataParam('data-siteid') != "") ? getIframeDataParam('data-siteid') : "577958";
-				var language = (getIframeDataParam('data-lang') != "") ? getIframeDataParam('data-lang') : "EN";
-				var wid = (getIframeDataParam('data-wid') != "") ? getIframeDataParam('data-wid') : "102";
-				var uiconf = (getIframeDataParam('data-uiconf') != "") ? getIframeDataParam('data-uiconf') : "23448355";
-				var entryid = (getIframeDataParam('data-entry') != "") ? getIframeDataParam('data-entry') : "0_w2pfb6wl";
-				var producer = (getIframeDataParam('data-producer') != "") ? getIframeDataParam('data-producer') : "producer_name";
-				var programme_type = (getIframeDataParam('data-type') != "") ? getIframeDataParam('data-type') : "programme_type";
-				var programme_name = (getIframeDataParam('data-name') != "") ? getIframeDataParam('data-name') : "programme_name";
-				var programme_url = (getIframeDataParam('data-url') != "") ? getIframeDataParam('data-url') : "https://www.europarltv.europa.eu/" + language + "/";
-				var debugEnabled = (getIframeDataParam('data-debug') != "") ? getIframeDataParam('data-debug') : false;
+				var siteID = (getIframeDataParam('siteid') != null) ? getIframeDataParam('siteid') : "577958";
+				var language = (getIframeDataParam('lang') != null) ? getIframeDataParam('lang') : "EN";
+				var wid = (getIframeDataParam('wid') != null) ? getIframeDataParam('wid') : "102";
+				var uiconf = (getIframeDataParam('uiconf') != null) ? getIframeDataParam('uiconf') : "23448355";
+				var entryid = (getIframeDataParam('entry') != null) ? getIframeDataParam('entry') : "0_w2pfb6wl";
+				var producer = (getIframeDataParam('producer') != null) ? getIframeDataParam('producer') : "producer_name";
+				var programme_type = (getIframeDataParam('type') != null) ? getIframeDataParam('type') : "programme_type";
+				var programme_name = (getIframeDataParam('name') != null) ? getIframeDataParam('name') : "programme_name";
+				var programme_url = (getIframeDataParam('url') != null) ? getIframeDataParam('url') : "https://www.europarltv.europa.eu/" + language + "/";
+				var debugEnabled = (getIframeDataParam('debug') != null) ? getIframeDataParam('debug') : false;
 				var level2 = 3;
 				var scriptAppended = false;
 				
@@ -168,7 +165,18 @@
 				    };
 				})();
 				
+				var url_domain = function(data) {
+					var a = document.createElement('a');
+					a.href = data;
+					return a.hostname;
+				};
+				
 				var tag = initATInternetTag.getInstance();
+				var externalURL = (typeof document.referrer !== "undefined") && (typeof document.referrer !== undefined) ? document.referrer : 'http://example.com';
+				var externalDomain = url_domain(externalURL);
+
+				debugData({action : 'URLS Domains Parent: ', datos : {domain : externalDomain, url: externalURL}});
+				
 				var embedVideoInterval = setInterval(function() {
 					if(scriptAppended && (typeof kWidget != 'undefined')) {
 						var playerOptions = {
@@ -184,7 +192,7 @@
 							},
 							"readyCallback" : function(playerId) {
 								var kdp = document.getElementById(playerId);
-								var mediaLabel = producer + "::" + programme_type  + "::" + parent.document.location + "::" + programme_name;
+								var mediaLabel = producer + "::" + programme_type  + "::" + externalURL + "::" + programme_name;
 
 								// Evento que se lanza cuando el video se reproduce por primera vez
 								kdp.kBind("firstPlay", function(data, id) {
@@ -197,7 +205,7 @@
 										isEmbedded: true, 
 										duration : parseInt(kdp.evaluate('{mediaProxy.entry.duration}'), 10),
 										broadcastMode: 'clip',
-										webdomain : (typeof parent.document.location.href !== "undefined") && (typeof parent.document.location.href !== undefined) ? parent.document.location.href : ''
+										webdomain : externalDomain
 									};
 									
 									tag.richMedia.add(datosMedia);
