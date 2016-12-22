@@ -29,7 +29,7 @@ HTML estático que es capaz de reproducir un video de Kaltura y enviar datos de 
 | uiconf 	| No         | 23448355 					        | ID del Player de Kaltura que mostrará el video. |
 | entry  	| No         | 0_w2pfb6wl  					        | ID del vídeo de Kaltura a reproducir. |
 | siteid 	| No         | 577958         						| AT-Internet, define unos identificadores para diferenciar el site de DEV/PRE/PRO. Añadir el ID que corresponda al site donde se muestre el Iframe. |
-| producer | No         | producer_name       					| Dato que se enviará a AT-Internet. Nombre del productor del vídeo. |
+| producer | No         |        					| Dato que se enviará a AT-Internet. Nombre del productor del vídeo. |
 | type 	| No         | programme_type				        | Dato que se enviará a AT-Internet. Corresponde a la categoría de la web del video actual. |
 | name 	| No         | programme_name        				| Dato que se enviará a AT-Internet. Corresponde con el nombre del video actual (el que aparece en la URL) |
 | debug	| No         | false         						| Si se activa a TRUE, se podrá ver los valores enviados a AT-Internet durante los eventos de play/pause/seek del player de Kaltura. |
