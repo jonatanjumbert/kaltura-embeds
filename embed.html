@@ -8,9 +8,9 @@
 		<!-- 
 			@author: Jonatan Jumbert
 			@mailto: hola@jonatanjumbert.com
-			@last-revision: 20/12/2016
+			@last-revision: 12/01/2017
 			@minified-with: https://kangax.github.io/html-minifier/
-			@version: 1.4
+			@version: 1.5
 		 -->
 		<div id="video-player" style="height:100%; width: 100%"></div>
 		<script>
@@ -172,7 +172,7 @@
 				};
 				
 				var tag = initATInternetTag.getInstance();
-				var externalURL = (typeof document.referrer !== "undefined") && (typeof document.referrer !== undefined) ? document.referrer : 'http://example.com';
+				var externalURL = ((typeof document.referrer !== "undefined") && (typeof document.referrer !== undefined) && document.referrer != "") ? document.referrer : 'http://url-not-available.com';
 				var externalDomain = url_domain(externalURL);
 
 				debugData({action : 'URLS Domains Parent: ', datos : {domain : externalDomain, url: externalURL}});
